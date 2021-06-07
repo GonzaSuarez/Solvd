@@ -12,12 +12,10 @@ public class Main {
 
     public static final void main(String[] args){
         List<Integer> to_sort_list = new ArrayList<>();
-
-        for(int i=0; i< args.length; i++){
-            try{
-                to_sort_list.add(Integer.parseInt(args[i]));
-            }
-            catch (NumberFormatException nfe) {
+        for (String arg : args) {
+            try {
+                to_sort_list.add(Integer.parseInt(arg));
+            } catch (NumberFormatException nfe) {
                 System.out.println("NumberFormatException: " + nfe.getMessage());
             }
         }
