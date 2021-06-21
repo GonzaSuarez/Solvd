@@ -1,5 +1,7 @@
 package com.solvd.bank.accounts;
 
+import com.solvd.bank.exceptions.NullCreditCardException;
+import com.solvd.bank.exceptions.UnpayableTransactionException;
 import com.solvd.bank.transactions.Transaction;
 import com.solvd.bank.transactions.Transference;
 import com.solvd.bank.paymethods.CreditCard;
@@ -28,13 +30,29 @@ public class CheckingAccount extends Account {
 
 
     public void payCredit(Transference transference, Account account){
-        creditCard.pay(transference,account);
+        try{
+            if (this.creditCard != null) {
+                creditCard.pay(transference, account);
+            } else {
+                throw new NullCreditCardException("There are no credit card related to this acount");
+            }
+        }
+        catch (NullCreditCardException e){
+            logger.error(e);
+        }
     }
 
     @Override
     public boolean transact(Transaction transaction, Account account) {
-        if (transaction.transact(this, transactionTax)) {
-            return this.transactionsRegister.add(transaction);
+        try {
+            if (transaction.transact(this, transactionTax)) {
+                return this.transactionsRegister.add(transaction);
+            }
+            else {
+                throw new UnpayableTransactionException("There is not enough balance for this transaction");
+            }
+        } catch (UnpayableTransactionException e) {
+            logger.error(e);
         }
         return false;
     }

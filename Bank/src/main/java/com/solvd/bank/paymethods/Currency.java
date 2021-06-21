@@ -1,9 +1,14 @@
 package com.solvd.bank.paymethods;
 
+import com.solvd.bank.accounts.Account;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Currency{
 
     private String name;
     private double ammount;
+    private Logger logger = LogManager.getLogger(Account.class);
 
     public Currency() {}
 

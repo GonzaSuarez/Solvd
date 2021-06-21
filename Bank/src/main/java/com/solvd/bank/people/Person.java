@@ -1,5 +1,9 @@
 package com.solvd.bank.people;
 
+import com.solvd.bank.accounts.Account;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Date;
 
 public abstract class Person {
@@ -8,6 +12,7 @@ public abstract class Person {
     protected String lastName;
     protected long id;
     protected Date birthDate;
+    protected Logger logger = LogManager.getLogger(Account.class);
 
     public Person(){}
 

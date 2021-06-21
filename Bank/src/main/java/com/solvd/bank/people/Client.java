@@ -1,6 +1,7 @@
 package com.solvd.bank.people;
 
 import com.solvd.bank.accounts.Account;
+import com.solvd.bank.exceptions.NullAccountsException;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,7 +18,10 @@ public class Client extends Person{
         this.accounts = new ArrayList<>();
     }
 
-    public List<Account> getAccounts() {
+    public List<Account> getAccounts()throws NullAccountsException {
+        if(this.accounts.isEmpty()){
+            throw new NullAccountsException("There are no accounts related to this client");
+        }
         return accounts;
     }
 
@@ -29,7 +33,10 @@ public class Client extends Person{
         return this.accounts.add(account);
     }
 
-    public boolean removeAccount(Account account){
+    public boolean removeAccount(Account account)throws NullAccountsException {
+        if(this.accounts.isEmpty()){
+            throw new NullAccountsException("There are no accounts related to this client");
+        }
         if(this.accounts.contains(account)){
             return this.accounts.remove(account);
         }
@@ -53,11 +60,16 @@ public class Client extends Person{
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Client client = (Client) obj;
-        return this.id == client.getId() &&
-                this.name.equals(client.name) &&
-                this.lastName.equals(client.lastName) &&
-                this.birthDate.equals(client.getBirthDate()) &&
-                this.accounts.equals(client.getAccounts());
+        try {
+            return this.id == client.getId() &&
+                    this.name.equals(client.name) &&
+                    this.lastName.equals(client.lastName) &&
+                    this.birthDate.equals(client.getBirthDate()) &&
+                    this.accounts.equals(client.getAccounts());
+        } catch (NullAccountsException e) {
+            logger.error("There are no accounts related to this client");
+        }
+        return false;
     }
 
     @Override

@@ -2,12 +2,15 @@ package com.solvd.bank.paymethods;
 
 import com.solvd.bank.accounts.Account;
 import com.solvd.bank.transactions.Transference;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class CreditCard {
 
     private String name;
     private long number;
     private double limit;
+    private Logger logger = LogManager.getLogger(Account.class);
 
     public CreditCard(){}
 

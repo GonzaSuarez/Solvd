@@ -1,5 +1,6 @@
 package com.solvd.bank.accounts;
 
+import com.solvd.bank.exceptions.UnpayableTransactionException;
 import com.solvd.bank.paymethods.Currency;
 import com.solvd.bank.transactions.Transaction;
 import com.solvd.bank.people.Client;
@@ -47,8 +48,15 @@ public class SavingsAccount extends FreeAccount {
 
     @Override
     public boolean transact(Transaction transaction, Account account) {
-        if (transaction.transact(this, TAX)) {
-            return this.transactionsRegister.add(transaction);
+        try {
+            if (transaction.transact(this, TAX)) {
+                return this.transactionsRegister.add(transaction);
+            }
+            else {
+                throw new UnpayableTransactionException("There is not enough balance for this transaction");
+            }
+        } catch (UnpayableTransactionException e) {
+            logger.error(e);
         }
         return false;
     }

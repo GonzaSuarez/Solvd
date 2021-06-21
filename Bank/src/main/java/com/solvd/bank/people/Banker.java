@@ -1,6 +1,7 @@
 package com.solvd.bank.people;
 
 import com.solvd.bank.accounts.Account;
+import com.solvd.bank.exceptions.NullAccountsException;
 
 import java.util.Date;
 
@@ -17,7 +18,11 @@ public class Banker extends Person{
     }
 
     public void closeAccount(Client client, Account account){
-        client.removeAccount(account);
+        try {
+            client.removeAccount(account);
+        } catch (NullAccountsException e) {
+            logger.error("There are no accounts related to this client");
+        }
     }
 
     @Override

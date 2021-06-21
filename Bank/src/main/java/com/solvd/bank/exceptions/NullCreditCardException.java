@@ -1,10 +1,10 @@
 package com.solvd.bank.exceptions;
 
-public class CreditCardException extends Exception{
+public class NullCreditCardException extends Exception{
 
-    public CreditCardException(){}
+    public NullCreditCardException(){}
 
-    public CreditCardException(String errorMessage, Throwable error){
-        super(errorMessage,error);
+    public NullCreditCardException(String errorMessage){
+        super(errorMessage);
     }
 }

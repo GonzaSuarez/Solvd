@@ -1,10 +1,10 @@
 package com.solvd.bank.exceptions;
 
-public class WrongNameException extends Exception{
+public class NullOwnerException extends Exception{
 
-    public WrongNameException(){}
+    public NullOwnerException(){}
 
-    public WrongNameException(String errorMessage){
+    public NullOwnerException(String errorMessage){
         super(errorMessage);
     }
 }
