@@ -5,8 +5,7 @@ import com.solvd.bank.exceptions.NullCurrencyException;
 import com.solvd.bank.exceptions.UnpayableTransactionException;
 import com.solvd.bank.paymethods.Currency;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Transference extends Transaction{
 
@@ -29,29 +28,39 @@ public class Transference extends Transaction{
 
     @Override
     public boolean transact(Account account, float tax){
-        List<Currency> accountCurrencies = new ArrayList<>();
+        Map<String, Currency> accountCurrencies = new HashMap<>();
         try {
-            accountCurrencies = account.getCurrencies();
+            if(account.getCurrencies()!=null){
+                accountCurrencies = account.getCurrencies();
+            }
+            else {
+                throw new NullCurrencyException("There are no currencies related to this client");
+            }
         } catch (NullCurrencyException e) {
             logger.error("There are no currencies related to this client");
         }
-        if(accountCurrencies.contains(this.currency)){
-            int accountCurrencyIndex = accountCurrencies.indexOf(this.currency);
+        Set<String> currenciesSet = accountCurrencies.keySet();
+        if (currenciesSet.contains(this.currency)) {
             try {
-                if (accountCurrencies.get(accountCurrencyIndex).getAmmount() > (this.currency.getAmmount() + tax)) {
-                    List<Currency> destinyCurrencies = null;
+                if (accountCurrencies.get(this.currency.getName()).getAmmount() > (this.currency.getAmmount() + tax)) {
+                    Map<String, Currency> destinyCurrencies = new HashMap<>();
                     try {
-                        destinyCurrencies = receiver.getCurrencies();
+                        if(receiver.getCurrencies()!=null){
+                            destinyCurrencies = receiver.getCurrencies();
+                        }
+                        else {
+                            throw new NullCurrencyException("There are no currencies related to this client");
+                        }
                     } catch (NullCurrencyException e) {
                         logger.error("There are no currencies related to this client");
                     }
-                    if (destinyCurrencies.contains(this.currency)) {
-                        int destinyCurrencyIndex = destinyCurrencies.indexOf(this.currency);
-                        destinyCurrencies.get(destinyCurrencyIndex).setAmmount(destinyCurrencies.get(destinyCurrencyIndex).getAmmount() + this.currency.getAmmount());
+                    Set<String> destinyCurrenciesSet = accountCurrencies.keySet();
+                    if (destinyCurrenciesSet.contains(this.currency)) {
+                        destinyCurrencies.get(this.currency.getName()).setAmmount(destinyCurrencies.get(this.currency.getName()).getAmmount() + this.currency.getAmmount());
                     } else {
                         receiver.addCurrency(this.currency);
                     }
-                    accountCurrencies.get(accountCurrencyIndex).setAmmount(accountCurrencies.get(accountCurrencyIndex).getAmmount() - this.currency.getAmmount() - tax);
+                    accountCurrencies.get(this.currency.getName()).setAmmount(accountCurrencies.get(this.currency.getName()).getAmmount() - this.currency.getAmmount() - tax);
                     return true;
                 } else {
                     throw new UnpayableTransactionException("There are no enough " + currency.getName() + " to complete the transacction");

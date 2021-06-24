@@ -3,29 +3,27 @@ package com.solvd.bank.people;
 import com.solvd.bank.accounts.Account;
 import com.solvd.bank.exceptions.NullAccountsException;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class Client extends Person{
 
-    private List<Account> accounts;
+    private Set<Account> accounts;
 
     public Client(){}
 
     public Client(String name, String lastName, int id, Date birthDate) {
         super(name, lastName, id, birthDate);
-        this.accounts = new ArrayList<>();
+        this.accounts = new HashSet<>();
     }
 
-    public List<Account> getAccounts()throws NullAccountsException {
+    public Set<Account> getAccounts()throws NullAccountsException {
         if(this.accounts.isEmpty()){
             throw new NullAccountsException("There are no accounts related to this client");
         }
         return accounts;
     }
 
-    public void setAccounts(List<Account> accounts) {
+    public void setAccounts(Set<Account> accounts) {
         this.accounts = accounts;
     }
 

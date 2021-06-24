@@ -10,13 +10,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public abstract class Account {
 
     protected Client owner;
     protected long cbu;
-    protected List<Currency> balances;
+    protected Map<String, Currency> balances;
     protected List<Transaction> transactionsRegister;
     protected Logger logger = LogManager.getLogger(Account.class);
 
@@ -28,7 +30,7 @@ public abstract class Account {
     public Account(Client owner, long cbu) {
         this.owner = owner;
         this.cbu = cbu;
-        this.balances = new ArrayList();
+        this.balances = new HashMap<>();
         this.transactionsRegister = new ArrayList();
     }
 
@@ -51,14 +53,14 @@ public abstract class Account {
         this.owner = owner;
     }
 
-    public List<Currency> getCurrencies()throws NullCurrencyException {
+    public Map<String,Currency> getCurrencies()throws NullCurrencyException {
         if(this.balances.isEmpty()){
             throw new NullCurrencyException("There are no currencies related to this account");
         }
         return balances;
     }
 
-    public void setCurrencies(List<Currency> balances) {
+    public void setCurrencies(Map<String, Currency> balances) {
         this.balances = balances;
     }
 
@@ -78,8 +80,8 @@ public abstract class Account {
         this.transactionsRegister = transactionsRegister;
     }
 
-    public boolean addCurrency(Currency currency){
-        return this.balances.add(currency);
+    public void addCurrency(Currency currency){
+        this.balances.put(currency.getName(),currency);
     }
 
     public abstract boolean transact(Transaction transaction, Account account);

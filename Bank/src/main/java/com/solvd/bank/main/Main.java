@@ -7,16 +7,34 @@ import com.solvd.bank.people.Banker;
 import com.solvd.bank.paymethods.Currency;
 import com.solvd.bank.people.Client;
 import com.solvd.bank.transactions.Transference;
+import com.solvd.linkedlist.LinkedList;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Date;
 
 public class Main {
 
-    private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger(Main.class);
+    private static final Logger logger = LogManager.getLogger(Main.class);
+
+    public static void printList(LinkedList list){
+        LinkedList searcher = list;
+        for(int i = 0; i<list.size(); i++){
+            logger.info(searcher.toString());
+            searcher = searcher.getNext();
+        }
+    }
+
+    public static void printListBackwards(LinkedList list){
+        LinkedList searcher = list.lastNode();
+        for(int i = 0; i<list.size(); i++){
+            logger.info(searcher.toString());
+            searcher = searcher.getPrevious();
+        }
+    }
 
     public static void main(String[] ags) throws NullAccountsException {
-        Banker banker = new Banker("Steve", "Gonzalez", 5854786, new Date());
+/*        Banker banker = new Banker("Steve", "Gonzalez", 5854786, new Date());
         Client clientJohn = new Client("John", "Rogers", 874259, new Date());
         Client clientRick = new Client("Rick", "Rogers", 874878, new Date());
 
@@ -49,7 +67,24 @@ public class Main {
         } catch (NullCurrencyException e) {
             logger.error(e);
         }
+*/
 
-
+        LinkedList<Integer> myLinkedList = new LinkedList<>();
+        myLinkedList.add(1);
+        myLinkedList.add(2);
+        myLinkedList.add(3);
+        myLinkedList.add(4);
+        logger.info("List in order:");
+        printList(myLinkedList);
+        logger.info("List backwards");
+        printListBackwards(myLinkedList);
+        myLinkedList.add(5, 2);
+        logger.info("List in order after adding in the middle:");
+        printList(myLinkedList);
+        logger.info("List backwards after adding in the middle");
+        printListBackwards(myLinkedList);
+        myLinkedList.remove(2);
+        logger.info("List in order after removing a value:");
+        printList(myLinkedList);
     }
 }

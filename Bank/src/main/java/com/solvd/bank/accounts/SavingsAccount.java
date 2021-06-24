@@ -12,14 +12,24 @@ public class SavingsAccount extends FreeAccount {
     private float transactionLimit;
     private float fixedTerm;
     private Date creationDate;
+    private String invertionCurrency;
 
     public SavingsAccount(){
         this.creationDate = new Date();
     }
 
-    public SavingsAccount(Client owner, long cbu) {
+    public SavingsAccount(Client owner, long cbu, String invertionCurrency) {
         super(owner, cbu);
         this.creationDate = new Date();
+        this.invertionCurrency = invertionCurrency;
+    }
+
+    public String getInvertionCurrency() {
+        return invertionCurrency;
+    }
+
+    public void setInvertionCurrency(String invertionCurrency) {
+        this.invertionCurrency = invertionCurrency;
     }
 
     public float getExtractionLimit() {
@@ -40,9 +50,7 @@ public class SavingsAccount extends FreeAccount {
 
     public void invertionBalance(){
         if((new Date().getMonth() - this.creationDate.getMonth()) > 0) {
-            for (Currency c : this.balances) {
-                 c.setAmmount(c.getAmmount() * fixedTerm);
-            }
+            this.balances.get(this.invertionCurrency).setAmmount(this.balances.get(this.invertionCurrency).getAmmount() * fixedTerm);
         }
     }
 
