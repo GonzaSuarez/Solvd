@@ -4,7 +4,7 @@ import com.solvd.bank.paymethods.Currency;
 
 import java.util.List;
 
-public interface ISorter {
+public interface ISorter<T> {
 
-    void sort(List<Currency> sortedList);
+    void sort(List<T> sortedList);
 }

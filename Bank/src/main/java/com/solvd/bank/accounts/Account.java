@@ -1,6 +1,5 @@
 package com.solvd.bank.accounts;
 
-import com.solvd.bank.exceptions.NullAccountsException;
 import com.solvd.bank.exceptions.NullCurrencyException;
 import com.solvd.bank.exceptions.NullOwnerException;
 import com.solvd.bank.people.Client;

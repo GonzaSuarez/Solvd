@@ -4,7 +4,7 @@ import com.solvd.bank.paymethods.Currency;
 
 import java.util.List;
 
-public interface ICurrencySearcher {
+public interface ICurrencySearcher<T> {
 
-    List<Currency> search(List<Currency> currencyList);
+    List<T> search(List<T> currencyList);
 }

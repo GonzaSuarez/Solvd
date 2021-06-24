@@ -3,7 +3,7 @@ package com.solvd.bank.interfaces.sorter;
 import com.solvd.bank.paymethods.Currency;
 import java.util.List;
 
-public class BubbleSort implements ISorter{
+public class BubbleSort implements ISorter<Currency>{
 
     public BubbleSort() {}
 

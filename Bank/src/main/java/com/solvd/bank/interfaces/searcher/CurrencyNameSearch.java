@@ -5,7 +5,7 @@ import com.solvd.bank.paymethods.Currency;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CurrencyNameSearch implements ICurrencySearcher {
+public class CurrencyNameSearch implements ICurrencySearcher<Currency>{
 
     private String name;
 

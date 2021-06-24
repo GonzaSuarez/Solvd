@@ -5,7 +5,7 @@ import com.solvd.bank.paymethods.Currency;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CurrencyGreaterThanBalanceSearch implements ICurrencySearcher {
+public class CurrencyGreaterThanBalanceSearch implements ICurrencySearcher<Currency> {
 
     private double value;
 
