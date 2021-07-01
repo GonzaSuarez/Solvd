@@ -36,9 +36,6 @@ public class Main {
         }
     }
 
-
-
-
         public static void main(String[] ags) throws NullAccountsException {
 /*        Banker banker = new Banker("Steve", "Gonzalez", 5854786, new Date());
         Client clientJohn = new Client("John", "Rogers", 874259, new Date());
