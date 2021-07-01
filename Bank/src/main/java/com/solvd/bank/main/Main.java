@@ -3,6 +3,7 @@ package com.solvd.bank.main;
 import com.solvd.bank.accounts.CheckingAccount;
 import com.solvd.bank.exceptions.NullAccountsException;
 import com.solvd.bank.exceptions.NullCurrencyException;
+import com.solvd.bank.interfaces.sorter.BubbleSort;
 import com.solvd.bank.people.Banker;
 import com.solvd.bank.paymethods.Currency;
 import com.solvd.bank.people.Client;
@@ -11,7 +12,9 @@ import com.solvd.linkedlist.LinkedList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Main {
 
@@ -33,7 +36,10 @@ public class Main {
         }
     }
 
-    public static void main(String[] ags) throws NullAccountsException {
+
+
+
+        public static void main(String[] ags) throws NullAccountsException {
 /*        Banker banker = new Banker("Steve", "Gonzalez", 5854786, new Date());
         Client clientJohn = new Client("John", "Rogers", 874259, new Date());
         Client clientRick = new Client("Rick", "Rogers", 874878, new Date());
