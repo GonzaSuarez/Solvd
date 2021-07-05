@@ -1,16 +1,20 @@
 package com.solvd.bank.people;
 
 import com.solvd.bank.accounts.Account;
+import com.solvd.bank.enums.WorkPosition;
 import com.solvd.bank.exceptions.NullAccountsException;
 
 import java.util.Date;
 
 public class Banker extends Person{
 
+    private WorkPosition workPosition;
+
     public Banker() {}
 
-    public Banker(String name, String lastName, int id, Date birthDate) {
-        super(name, lastName, id, birthDate);
+    public Banker(String name, String lastName, int id, WorkPosition workPosition) {
+        super(name, lastName, id);
+        this.workPosition = workPosition;
     }
 
     public void openAccount(Client client, Account account){
@@ -23,6 +27,14 @@ public class Banker extends Person{
         } catch (NullAccountsException e) {
             logger.error("There are no accounts related to this client");
         }
+    }
+
+    public WorkPosition getWorkPosition() {
+        return workPosition;
+    }
+
+    public void setWorkPosition(WorkPosition workPosition) {
+        this.workPosition = workPosition;
     }
 
     @Override

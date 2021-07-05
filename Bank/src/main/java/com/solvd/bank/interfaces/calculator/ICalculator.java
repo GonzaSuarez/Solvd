@@ -2,7 +2,7 @@ package com.solvd.bank.interfaces.calculator;
 
 import com.solvd.bank.paymethods.Currency;
 
-public interface ICalculator {
+public interface ICalculator<T> {
 
-    double calculate(Currency currency);
+    double calculate(T value);
 }

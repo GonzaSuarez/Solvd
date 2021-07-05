@@ -1,30 +1,32 @@
 package com.solvd.bank.paymethods;
 
 import com.solvd.bank.accounts.Account;
+import com.solvd.bank.enums.CreditCardProvider;
 import com.solvd.bank.transactions.Transference;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class CreditCard {
 
-    private String name;
-    private long number;
+    private CreditCardProvider name;
+    private int number;
     private double limit;
+
     private Logger logger = LogManager.getLogger(Account.class);
 
     public CreditCard(){}
 
-    public CreditCard(String name, long number, double limit) {
+    public CreditCard(CreditCardProvider name, int number, double limit) {
         this.name = name;
-        this.number = number;
         this.limit = limit;
+        this.number = Integer.valueOf(String.valueOf(this.name.getHeadNumber()) + String.valueOf(number));
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
-    public void setName(String name) {
+    public void setName(CreditCardProvider name) {
         this.name = name;
     }
 

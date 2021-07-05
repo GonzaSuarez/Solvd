@@ -1,5 +1,6 @@
 package com.solvd.bank.interfaces.shiftmanager;
 
+import com.solvd.bank.enums.Day;
 import com.solvd.bank.people.Banker;
 
 public class TakeBreak implements IShiftManager {
@@ -21,8 +22,10 @@ public class TakeBreak implements IShiftManager {
     }
 
     @Override
-    public void manageShift() {
-        //banker.sleep()
-        //Here the banker stops working, for that I use the sleep method from Thread
+    public void manageShift(Day day) {
+        if(day.isWeekend()) {
+            //banker.sleep()
+            //Here the banker stops working, for that I use the sleep method from Thread
+        }
     }
 }

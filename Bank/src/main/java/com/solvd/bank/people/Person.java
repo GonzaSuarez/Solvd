@@ -16,11 +16,10 @@ public abstract class Person {
 
     public Person(){}
 
-    public Person(String name, String lastName, long id, Date birthDate) {
+    public Person(String name, String lastName, long id) {
         this.name = name;
         this.lastName = lastName;
         this.id = id;
-        this.birthDate = birthDate;
     }
 
     public String getName() {

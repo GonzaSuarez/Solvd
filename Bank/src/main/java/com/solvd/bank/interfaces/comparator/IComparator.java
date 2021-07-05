@@ -1,6 +1,6 @@
 package com.solvd.bank.interfaces.comparator;
 
-public interface IComparator {
+public interface IComparator<T> {
 
-    boolean compare(Object o);
+    boolean compare(T a, T b);
 }

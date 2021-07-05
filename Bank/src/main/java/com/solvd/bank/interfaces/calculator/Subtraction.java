@@ -2,7 +2,7 @@ package com.solvd.bank.interfaces.calculator;
 
 import com.solvd.bank.paymethods.Currency;
 
-public class Subtraction implements ICalculator {
+public class Subtraction implements ICalculator<Currency> {
 
     private double value;
 

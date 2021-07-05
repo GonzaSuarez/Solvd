@@ -2,7 +2,7 @@ package com.solvd.bank.interfaces.calculator;
 
 import com.solvd.bank.paymethods.Currency;
 
-public class Addition implements ICalculator {
+public class Addition implements ICalculator<Currency> {
 
     private double value;
 

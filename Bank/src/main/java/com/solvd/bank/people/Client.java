@@ -11,8 +11,8 @@ public class Client extends Person{
 
     public Client(){}
 
-    public Client(String name, String lastName, int id, Date birthDate) {
-        super(name, lastName, id, birthDate);
+    public Client(String name, String lastName, int id) {
+        super(name, lastName, id);
         this.accounts = new HashSet<>();
     }
 
