@@ -1,6 +1,7 @@
 package com.solvd.bank.people;
 
 import com.solvd.bank.accounts.Account;
+import com.solvd.bank.enums.Sex;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -13,6 +14,7 @@ public abstract class Person {
     protected long id;
     protected Date birthDate;
     protected Logger logger = LogManager.getLogger(Account.class);
+    private Sex sex;
 
     public Person(){}
 
@@ -48,6 +50,14 @@ public abstract class Person {
 
     public Date getBirthDate() {
         return birthDate;
+    }
+
+    public Sex getSex() {
+        return sex;
+    }
+
+    public void setSex(Sex sex) {
+        this.sex = sex;
     }
 
     public void setBirthDate(Date birthDate) {

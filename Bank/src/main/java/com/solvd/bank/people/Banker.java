@@ -1,6 +1,7 @@
 package com.solvd.bank.people;
 
 import com.solvd.bank.accounts.Account;
+import com.solvd.bank.enums.Office;
 import com.solvd.bank.enums.WorkPosition;
 import com.solvd.bank.exceptions.NullAccountsException;
 
@@ -9,6 +10,7 @@ import java.util.Date;
 public class Banker extends Person{
 
     private WorkPosition workPosition;
+    private Office office;
 
     public Banker() {}
 
@@ -35,6 +37,14 @@ public class Banker extends Person{
 
     public void setWorkPosition(WorkPosition workPosition) {
         this.workPosition = workPosition;
+    }
+
+    public Office getOffice() {
+        return office;
+    }
+
+    public void setOffice(Office office) {
+        this.office = office;
     }
 
     @Override
