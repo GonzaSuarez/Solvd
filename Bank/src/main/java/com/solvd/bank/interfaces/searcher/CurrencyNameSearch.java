@@ -14,11 +14,7 @@ public class CurrencyNameSearch implements ISearcher<Currency, String>{
     @Override
     public List<Currency> search(List<Currency> currencyList, String name) {
         List<Currency> currencies = new ArrayList<>();
-        for (Currency c: currencyList) {
-            if(c.getName().equals(name)){
-                currencies.add(c);
-            }
-        }
+        currencies.stream().forEach((currency)-> {if(currency.getName().equals(name)){currencies.add(currency);}});
         return currencies;
 
     }

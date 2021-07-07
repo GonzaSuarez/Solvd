@@ -12,48 +12,14 @@ import java.util.Map;
 
 public class Main {
 
-    private static final Logger logger = LogManager.getLogger(Main.class);
-
-    public static Map<String, Integer> readFile(String fileName) throws IOException{
+    public static void main(String[] args) throws IOException {
         Map<String, Integer> storedWords = new HashMap<>();
-        String text = FileUtils.readFileToString(new File(fileName),"UTF-8").toLowerCase();
-        Arrays.stream(StringUtils.split(text," .,-/"))
-                .forEach(
-                        (word)->{
-                                if(storedWords.containsKey(word)){
-                                    storedWords.replace(word, storedWords.get(word) + 1);
-                                }
-                                else {
-                                    storedWords.put(word, 1);
-                                }
-                            });
-        return storedWords;
-    }
-
-    public static void writeFile(Map<String, Integer> storedWords, String output) throws IOException {
-        File fileOutput = new File(output);
-        FileWriter fwOutput = new FileWriter(fileOutput);
-        storedWords.keySet().stream().forEach((word) -> {
-            try {
-                fwOutput.write(word + " - " + storedWords.get(word));
-                fwOutput.write("\n");
-                fwOutput.flush();
-
-            } catch (IOException e) {
-                logger.error(e);
-            }
-        });
-        fwOutput.close();
-    }
-
-    public static void main(String[] args){
-
-        try{
-            writeFile(readFile("E:\\Solvd\\FileSearcher\\src\\main\\resources\\Input"),"Output");
-        }
-        catch (IOException e){
-            logger.error(e);
-        }
+        String text = FileUtils.readFileToString(new File("src/main/resources/Input"),"UTF-8").toLowerCase();
+        Arrays.stream(StringUtils.split(text," .,-/")).forEach((word)->{
+                            if(storedWords.containsKey(word))  storedWords.replace(word, storedWords.get(word) + 1);
+                            else storedWords.put(word, 1);
+                        });
+        FileUtils.writeStringToFile(new File("src/main/resources/Output"), storedWords.toString(), "UTF-8");
 
     }
 

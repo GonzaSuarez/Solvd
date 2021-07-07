@@ -15,22 +15,6 @@ public class Main {
 
     private static final Logger logger = LogManager.getLogger(Main.class);
 
-    public static void printList(LinkedList list){
-        LinkedList searcher = list;
-        for(int i = 0; i<list.size(); i++){
-            logger.info(searcher.toString());
-            searcher = searcher.getNext();
-        }
-    }
-
-    public static void printListBackwards(LinkedList list){
-        LinkedList searcher = list.lastNode();
-        for(int i = 0; i<list.size(); i++){
-            logger.info(searcher.toString());
-            searcher = searcher.getPrevious();
-        }
-    }
-
     public static void main(String[] ags) throws NullAccountsException {
 
         //BANK TESTING FUNCTIONALITIES
@@ -72,27 +56,26 @@ public class Main {
 
         // LINKED LIST TESTING FUNCTIONALITIES
 
-    /*
         LinkedList<Integer> myLinkedList = new LinkedList<>();
         myLinkedList.add(1);
         myLinkedList.add(2);
         myLinkedList.add(3);
         myLinkedList.add(4);
         logger.info("List in order:");
-        printList(myLinkedList);
+        logger.info(myLinkedList.toString());
         logger.info("List backwards");
-        printListBackwards(myLinkedList);
+        logger.info(myLinkedList.toStringBackwards());
         myLinkedList.add(5, 2);
         logger.info("List in order after adding in the middle:");
-        printList(myLinkedList);
-        logger.info("List backwards after adding in the middle");
-        printListBackwards(myLinkedList);
+        logger.info(myLinkedList.toString());
+        logger.info("List backwards after adding in the middle:");
+        logger.info(myLinkedList.toStringBackwards());
         myLinkedList.remove(2);
         logger.info("List in order after removing a value:");
-        printList(myLinkedList);
+        logger.info(myLinkedList.toString());
 
-    */
 
+/*
     // CUSTOM LAMBDAS TESTING FUNCTIONALITIES
 
         TransactionFinder transactionFinder = new TransactionFinder();
@@ -129,7 +112,8 @@ public class Main {
         double result = doubleFunction.calculate((val) -> (double)val);
 
 
+    }*/
+
+
     }
-
-
 }

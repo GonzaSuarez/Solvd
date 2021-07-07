@@ -12,11 +12,9 @@ public class CurrencyGreaterThanBalanceSearch implements ISearcher<Currency, Dou
     @Override
     public List<Currency> search(List<Currency> currencyList, Double value) {
         List<Currency> list = new ArrayList<>();
-        for (Currency c: currencyList) {
-            if(c.getAmmount() >= value){
-                list.add(c);
-            }
-        }
+        list.stream().forEach((currency -> {
+            if(currency.getAmmount() >= value){list.add(currency);}
+        }));
         return list;
     }
 }
