@@ -1,0 +1,132 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2580
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww15220\viewh14240\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97INSERTS\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+INSERT INTO mydb.Country (country_name) VALUES ("Argentina");\
+\
+INSERT INTO mydb.City (city_name, postal_code, Country_idCountry) VALUES\
+("Necochea", 7630, (SELECT idCountry FROM mydb.Country WHERE country_name = "Argentina\'94)),\
+("Quequen", 7631, (SELECT idCountry FROM mydb.Country WHERE country_name = "Argentina\'94));\
+\
+INSERT INTO mydb.Hotel (hotel_name, City_idCity) VALUES\
+("Hotel Niken", (SELECT idCity FROM mydb.City WHERE city_name= "Necochea")),\
+("Hotel Real", (SELECT idCity FROM mydb.City WHERE city_name= "Necochea"));\
+\
+INSERT INTO mydb.Room_Type (type_name) VALUES \
+("Presidential"), ("Suit"), ("Marital");\
+\
+INSERT INTO mydb.Room (room_name, current_price, Hotel_idHotel, Room_Type_idRoom_Type) VALUES\
+    ( "Nikel Suit 1", 200, (SELECT idHotel FROM mydb.Hotel WHERE hotel_name= "Hotel Niken"),(SELECT idRoom_Type FROM mydb.Room_Type WHERE type_name= "Suit")),\
+    ( "Nikel Marital 1", 100, (SELECT idHotel FROM mydb.Hotel WHERE hotel_name= "Hotel Niken") ,(SELECT idRoom_Type FROM mydb.Room_Type WHERE type_name= "Marital")),\
+    ( "Nikel Presidential 1", 300, (SELECT idHotel FROM mydb.Hotel WHERE hotel_name= "Hotel Niken"), (SELECT idRoom_Type FROM mydb.Room_Type WHERE type_name= "Presidential")),\
+    ( "Real Suit 1", 200, (SELECT idHotel FROM mydb.Hotel WHERE hotel_name= "Hotel Real"), (SELECT idRoom_Type FROM mydb.Room_Type WHERE type_name= "Suit")),\
+    ( "Real Marital 1", 100, (SELECT idHotel FROM mydb.Hotel WHERE hotel_name= "Hotel Real"), (SELECT idRoom_Type FROM mydb.Room_Type WHERE type_name= "Marital")),\
+    ( "Real Presidential 1", 300, (SELECT idHotel FROM mydb.Hotel WHERE hotel_name= "Hotel Real"), (SELECT idRoom_Type FROM mydb.Room_Type WHERE type_name= "Presidential"));\
+\
+INSERT INTO mydb.Reservation (start_date, total_price, User_idUser) VALUES\
+(STR_TO_DATE("10,7,2021", "%d,%m,%Y"), 1000, (SELECT idUser FROM mydb.User WHERE first_name = "Gonzalo")); \
+\
+INSERT INTO mydb.User (first_name, last_name, email, phone, address) VALUES \
+("Gonzalo", "Suarez", "legonza424@gmail.com", 2262651853, "521 street, number 344");\
+\
+INSERT INTO mydb.Room_Reserved(price, Room_idRoom, Reservation_idReservation) VALUES\
+((SELECT current_price FROM mydb.Room WHERE room_name = "Nikel Suit 1"), (SELECT idRoom FROM mydb.Room WHERE room_name = "Nikel Suit 1"), (SELECT idReservation FROM mydb.Reservation WHERE idReservation =  1) );\
+\
+INSERT INTO mydb.plan(plan_name, max_room, monthly_price) VALUES\
+("Summer Discount", 4, 500);\
+\
+INSERT INTO mydb.Travel_Company(company_name, City_idCity) VALUES\
+("Travel Solvd", (SELECT idCity FROM mydb.City WHERE city_name= "Necochea"));\
+\
+INSERT INTO mydb.User_Account(first_name, user_name, password, Travel_Company_idTravelCompany) VALUES\
+("Gonzalo", "GonzaSuarez", "password", (SELECT idTravelCompany FROM mydb.Travel_Company WHERE company_name = "Travel Solvd"));\
+\
+INSERT INTO mydb.company_plan (plan_idplan, Travel_Company_idTravelCompany) VALUES\
+((SELECT idplan FROM mydb.plan WHERE plan_name= "Summer Discount"),(SELECT idTravelCompany FROM mydb.Travel_Company WHERE company_name = "Travel Solvd"));\
+\
+INSERT INTO mydb.Plane(capacity,Travel_Company_idTravelCompany,Travel_Company_City_idCity) VALUES\
+(200, (SELECT idTravelCompany FROM mydb.Travel_Company WHERE company_name = "Travel Solvd"), (SELECT City_idCity FROM mydb.Travel_Company WHERE company_name = "Travel Solvd"));\
+\
+\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97UPDATES\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+SET SQL_SAFE_UPDATES = 0;\
+\
+\
+UPDATE  mydb.City\
+SET postal_code = 3076\
+WHERE city_name = "Necochea";\
+\
+UPDATE  mydb.City\
+SET postal_code = 3176\
+WHERE city_name = "Quequen";\
+\
+UPDATE mydb.Hotel\
+SET description = "Luxury Hotel near Nechochea's beach"\
+WHERE hotel_name = "Hotel Niken";\
+\
+UPDATE mydb.Hotel\
+SET description = "Most iconic Hotel from Necochea"\
+WHERE hotel_name = "Hotel Real";\
+\
+UPDATE mydb.plan\
+SET min_room = 1\
+WHERE plan_name = "Summer Discount";\
+\
+UPDATE mydb.plan\
+SET details = "Time limited discount for Summer vacations"\
+WHERE plan_name = "Summer Discount";\
+\
+UPDATE mydb.Plane\
+SET capacity = 400\
+WHERE idPlane = 1;\
+\
+UPDATE mydb.Reservation\
+SET end_date = STR_TO_DATE("19,7,2021", "%d,%m,%Y")\
+WHERE idReservation = 1;\
+\
+UPDATE mydb.Reservation\
+SET discount = 0.20\
+WHERE idReservation = 1;\
+\
+UPDATE mydb.Reservation\
+SET total_price = total_price * discount\
+where idReservation=1;\
+\
+UPDATE mydb.Room\
+SET description = "The most luxury room in the hotel, including free room service and minibar"\
+where room_name = "Presidential";\
+\
+UPDATE mydb.Room\
+SET description = "A big room, with jacuzzi and balcony"\
+where room_name= "Suit";\
+\
+UPDATE mydb.Room\
+SET description = "Most common room"\
+where room_name= "Marital";\
+\
+UPDATE mydb.Travel_Company\
+SET email = "travelsolvd@gmail.com"\
+WHERE company_name = "Travel Solvd";\
+\
+UPDATE mydb.User\
+SET last_name = "Suarez"\
+WHERE first_name = "Gonzalo";\
+\
+\
+SET SQL_SAFE_UPDATES = 1;\
+\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97UPDATES\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+\
+E\
+\
+\
+}
