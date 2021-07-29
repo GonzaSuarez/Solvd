@@ -4,10 +4,12 @@ import com.solvd.bank.exceptions.NullAccountsException;
 import com.solvd.bank.lambda.*;
 import com.solvd.bank.transactions.Transaction;
 import com.solvd.bank.transactions.Transference;
+import com.solvd.connectionpool.ConnectionPool;
 import com.solvd.linkedlist.LinkedList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.function.ToDoubleBiFunction;
 
@@ -55,7 +57,7 @@ public class Main {
     */
 
         // LINKED LIST TESTING FUNCTIONALITIES
-
+/*
         LinkedList<Integer> myLinkedList = new LinkedList<>();
         myLinkedList.add(1);
         myLinkedList.add(2);
@@ -74,6 +76,7 @@ public class Main {
         logger.info("List in order after removing a value:");
         logger.info(myLinkedList.toString());
 
+ */
 
 /*
     // CUSTOM LAMBDAS TESTING FUNCTIONALITIES
@@ -113,7 +116,6 @@ public class Main {
 
 
     }*/
-
 
     }
 }
