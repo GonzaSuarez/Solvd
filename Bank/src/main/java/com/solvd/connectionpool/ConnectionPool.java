@@ -1,42 +1,71 @@
 package com.solvd.connectionpool;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import java.sql.Connection;
-
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.concurrent.*;
 
 public class ConnectionPool {
 
+    private static final Logger log = LogManager.getLogger(ConnectionPool.class);;
     private static final int MAX_CONNECTIONS = 5;
-    private List<Connection> connectionsPool = new CopyOnWriteArrayList<>();
-    private List<Connection> connectionsInUse = new CopyOnWriteArrayList<>();
+    private static  ConnectionPool instance;
+    private static BlockingQueue<Connection> connectionsPool = new ArrayBlockingQueue<>(MAX_CONNECTIONS);
+    private String url;
+    private String user;
+    private String password;
 
 
-    public ConnectionPool(String url, String user, String password) throws SQLException {
-        for (int i = 0; i < MAX_CONNECTIONS; i++) {
-            connectionsPool.add(createConnection(url, user, password));
+    private ConnectionPool(String url, String user, String password){
+        try {
+            createConnection(url, user, password);
+        } catch (SQLException throwables) {
+            log.error(throwables);
         }
+    }
+
+    public static ConnectionPool getInstance(){
+        if(instance == null){
+            instance = new ConnectionPool(getInstance().getUrl(), getInstance().getUser(), getInstance().getPassword());
+        }
+        return instance;
     }
 
     public Connection getConnection() throws InterruptedException {
-        while(this.connectionsPool.isEmpty()){
-            this.wait();
-        }
-        Connection connection = this.connectionsPool.remove(0);
-        connectionsInUse.add(connection);
-        return connection;
+        return connectionsPool.remove();
     }
 
-    public boolean releaseConnection(Connection connection) {
+    public void releaseConnection(Connection connection) {
         this.connectionsPool.add(connection);
-        this.notifyAll();
-        return connectionsInUse.remove(connection);
     }
 
     private static Connection createConnection(String url, String user, String password) throws SQLException {
         return DriverManager.getConnection(url, user, password);
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
