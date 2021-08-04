@@ -2,6 +2,7 @@ package com.solvd.booking.travelcompany;
 
 public class Plan {
 
+    private int id;
     private String name;
     private int minRoom;
     private int maxRoom;
@@ -11,10 +12,19 @@ public class Plan {
     public Plan() {
     }
 
-    public Plan(String name, int minRoom, int maxRoom) {
+    public Plan(int id, String name, int minRoom, int maxRoom) {
+        this.id = id;
         this.name = name;
         this.minRoom = minRoom;
         this.maxRoom = maxRoom;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

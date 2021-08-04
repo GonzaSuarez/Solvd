@@ -2,6 +2,7 @@ package com.solvd.booking.travelcompany;
 
 public class UserAccount {
 
+    private int id;
     private String firstName;
     private String lastName;
     private String email;
@@ -12,10 +13,18 @@ public class UserAccount {
     public UserAccount() {
     }
 
-    public UserAccount(String email, String user, String password) {
-        this.email = email;
+    public UserAccount(int id, String user, String password) {
+        this.id = id;
         this.user = user;
         this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {

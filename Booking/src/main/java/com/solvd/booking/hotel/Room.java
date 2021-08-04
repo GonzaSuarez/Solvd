@@ -2,43 +2,43 @@ package com.solvd.booking.hotel;
 
 public class Room {
 
-    private float length;
-    private float width;
-    private float height;
+    private int id;
+    private String roomName;
+    private int hotelId;
     private double price;
     private String description;
 
     public Room() {
     }
 
-    public Room(float length, float width, float height) {
-        this.length = length;
-        this.width = width;
-        this.height = height;
+    public Room(int id, String roomName, int hotelId) {
+        this.id = id;
+        this.roomName = roomName;
+        this.hotelId = hotelId;
     }
 
-    public float getLength() {
-        return length;
+    public int getId() {
+        return id;
     }
 
-    public void setLength(float length) {
-        this.length = length;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public float getWidth() {
-        return width;
+    public String getRoomName() {
+        return roomName;
     }
 
-    public void setWidth(float width) {
-        this.width = width;
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
     }
 
-    public float getHeight() {
-        return height;
+    public int getHotelId() {
+        return hotelId;
     }
 
-    public void setHeight(float height) {
-        this.height = height;
+    public void setHotelId(int hotelId) {
+        this.hotelId = hotelId;
     }
 
     public double getPrice() {

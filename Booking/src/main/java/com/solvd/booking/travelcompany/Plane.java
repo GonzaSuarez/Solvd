@@ -2,13 +2,23 @@ package com.solvd.booking.travelcompany;
 
 public class Plane {
 
+    private int id;
     private int capacity;
 
     public Plane() {
     }
 
-    public Plane(int capacity) {
+    public Plane(int id, int capacity) {
         this.capacity = capacity;
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getCapacity() {

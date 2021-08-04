@@ -8,6 +8,7 @@ import java.util.List;
 
 public class TravelCompany {
 
+    private int id;
     private String name;
     private String email;
     private List<Plane> planes;
@@ -18,13 +19,21 @@ public class TravelCompany {
     public TravelCompany() {
     }
 
-    public TravelCompany(String name, String email, City city) {
+    public TravelCompany(int id, String name,  City city) {
         this.name = name;
-        this.email = email;
+        this.id = id;
         this.city = city;
         this.planes = new ArrayList<>();
         this.hotels = new ArrayList<>();
         this.userAccounts = new ArrayList<>();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

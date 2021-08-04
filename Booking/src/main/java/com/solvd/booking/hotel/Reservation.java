@@ -4,21 +4,29 @@ import java.util.Calendar;
 
 public class Reservation {
 
+    private int id;
     private Calendar startingDate;
     private Calendar endingDate;
     private double price;
     private float discount;
     private User client;
-    private Room room;
 
     public Reservation() {
     }
 
-    public Reservation(Room room,  User client) {
-        this.price = room.getPrice();
+    public Reservation(int id, float price,  User client) {
+        this.price = price;
         this.client = client;
-        this.room = room;
+        this.id = id;
         this.startingDate = Calendar.getInstance();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Calendar getStartingDate() {
@@ -61,11 +69,4 @@ public class Reservation {
         this.client = client;
     }
 
-    public Room getRoom() {
-        return room;
-    }
-
-    public void setRoom(Room room) {
-        this.room = room;
-    }
 }
