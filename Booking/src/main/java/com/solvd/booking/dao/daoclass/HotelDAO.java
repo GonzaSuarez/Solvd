@@ -9,6 +9,8 @@ import org.apache.logging.log4j.Logger;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HotelDAO extends AbstractDAO implements IHotelDAO {
 
@@ -28,6 +30,28 @@ public class HotelDAO extends AbstractDAO implements IHotelDAO {
             if(rs.next()){
                 return new Hotel(rs.getInt("idHotel"), rs.getString("hotel_name"));
             }
+        }
+        catch(SQLException e){
+            log.error(e.getMessage());
+        }
+        finally {
+            ConnectionPool.getInstance("jdbc:mysql://localhost:3306", "root", "devintern").
+                    releaseConnection(connection);
+        }
+        return null;
+    }
+
+    @Override
+    public List<Hotel> getHotelsByTravelCompanyId(int travelCompanyId) {
+
+        try(PreparedStatement ps = connection.prepareStatement(GET_HOTEL_BY_ID)){
+            List<Hotel> hotels = new ArrayList<>();
+            ps.setInt(1, travelCompanyId);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                 hotels.add(new Hotel(rs.getInt("idHotel"), rs.getString("hotel_name")));
+            }
+            return hotels;
         }
         catch(SQLException e){
             log.error(e.getMessage());

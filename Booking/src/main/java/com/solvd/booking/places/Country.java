@@ -44,6 +44,9 @@ public class Country {
     public boolean addCity(City city){
         return this.cities.add(city);
     }
+    public boolean addCity(List<City> city){
+        return this.cities.addAll(city);
+    }
 
     public boolean removeCity(City city){
         return this.cities.remove(city);

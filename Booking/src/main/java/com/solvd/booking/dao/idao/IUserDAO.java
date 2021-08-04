@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface IUserDAO extends IBaseDAO<User>{
 
+    User getUserByReservationId(int id);
 }

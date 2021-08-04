@@ -9,7 +9,6 @@ public class Hotel {
     private String name;
     private List<Room> rooms;
     private String description;
-    private List<Reservation> reservations;
 
     public Hotel() {
     }
@@ -20,9 +19,6 @@ public class Hotel {
         this.rooms = new ArrayList<>();
     }
 
-    public List<Reservation> getReservations() {
-        return reservations;
-    }
 
     public int getId() {
         return id;
@@ -59,12 +55,12 @@ public class Hotel {
     public boolean addRoom(Room room){
         return this.rooms.add(room);
     }
+    public boolean addRoom(List<Room> room){
+        return this.rooms.addAll(room);
+    }
 
     public boolean deleteRoom(Room room){
         return this.rooms.remove(room);
     }
 
-    public void reserveRoom(int id, float price, User user){
-        this.reservations.add(new Reservation(id, price, user));
-    }
 }
