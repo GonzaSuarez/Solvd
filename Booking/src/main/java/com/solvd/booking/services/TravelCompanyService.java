@@ -1,13 +1,11 @@
 package com.solvd.booking.services;
 
-import com.solvd.booking.dao.daoclass.*;
-import com.solvd.booking.dao.idao.*;
-import com.solvd.booking.hotel.Hotel;
-import com.solvd.booking.places.City;
+import com.solvd.booking.dao.*;
+import com.solvd.booking.dao.mysqldao.jbdc.*;
 import com.solvd.booking.travelcompany.TravelCompany;
-import com.solvd.booking.travelcompany.UserAccount;
 
-import java.util.List;
+import java.io.IOException;
+import java.sql.SQLException;
 
 public class TravelCompanyService {
 
@@ -17,7 +15,7 @@ public class TravelCompanyService {
     private IUserAccountDAO userAccountDAO = new UserAccountDAO();
     private IHotelDAO hotelDAO = new HotelDAO();
 
-    public TravelCompanyService() throws InterruptedException {
+    public TravelCompanyService() throws InterruptedException, SQLException, ClassNotFoundException, IOException {
     }
 
     public ICityDAO getCityDAO() {
@@ -36,7 +34,7 @@ public class TravelCompanyService {
         this.travelCompanyDAO = travelCompanyDAO;
     }
 
-    public TravelCompany getTravelCompany(int travelCompanyId) throws InterruptedException {
+    public TravelCompany getTravelCompany(int travelCompanyId) throws InterruptedException, SQLException, ClassNotFoundException, IOException {
         TravelCompany travelCompany = travelCompanyDAO.getItemById(travelCompanyId);
         travelCompany.setCity(cityDAO.getCityByTravelCompanyId(travelCompanyId));
         travelCompany.setPlanes(planeDAO.getPlanesByTravelCompanyId(travelCompanyId));

@@ -9,16 +9,25 @@ public class Hotel {
     private String name;
     private List<Room> rooms;
     private String description;
+    private int cityId;
 
     public Hotel() {
     }
 
-    public Hotel(int id, String name) {
+    public Hotel(int id, String name, int cityId) {
         this.id = id;
         this.name = name;
+        this.cityId = cityId;
         this.rooms = new ArrayList<>();
     }
 
+    public int getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(int cityId) {
+        this.cityId = cityId;
+    }
 
     public int getId() {
         return id;

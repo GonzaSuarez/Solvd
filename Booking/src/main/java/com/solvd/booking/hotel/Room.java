@@ -4,17 +4,18 @@ public class Room {
 
     private int id;
     private String roomName;
-    private int hotelId;
+    private int idHotel;
     private double price;
     private String description;
+    
 
     public Room() {
     }
 
-    public Room(int id, String roomName, int hotelId) {
+    public Room(int id, String roomName, int idHotel) {
         this.id = id;
         this.roomName = roomName;
-        this.hotelId = hotelId;
+        this.idHotel = idHotel;
     }
 
     public int getId() {
@@ -33,12 +34,12 @@ public class Room {
         this.roomName = roomName;
     }
 
-    public int getHotelId() {
-        return hotelId;
+    public int getIdHotel() {
+        return idHotel;
     }
 
-    public void setHotelId(int hotelId) {
-        this.hotelId = hotelId;
+    public void setIdHotel(int idHotel) {
+        this.idHotel = idHotel;
     }
 
     public double getPrice() {

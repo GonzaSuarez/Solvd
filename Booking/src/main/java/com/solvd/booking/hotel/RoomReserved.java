@@ -2,7 +2,7 @@ package com.solvd.booking.hotel;
 
 public class RoomReserved {
 
-    private int idRoomReserved;
+    private int id;
     private float price;
     private int idRoom;
     private int idReservation;
@@ -10,18 +10,18 @@ public class RoomReserved {
     public RoomReserved() {
     }
 
-    public RoomReserved(int idRoomReserved, int idRoom, int idReservation) {
-        this.idRoomReserved = idRoomReserved;
+    public RoomReserved(int id, int idRoom, int idReservation) {
+        this.id = id;
         this.idRoom = idRoom;
         this.idReservation = idReservation;
     }
 
-    public int getIdRoomReserved() {
-        return idRoomReserved;
+    public int getId() {
+        return id;
     }
 
-    public void setIdRoomReserved(int idRoomReserved) {
-        this.idRoomReserved = idRoomReserved;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public float getPrice() {

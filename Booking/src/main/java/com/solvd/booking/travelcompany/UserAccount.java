@@ -8,6 +8,7 @@ public class UserAccount {
     private String email;
     private String user;
     private String password;
+    private int idCompany;
 
 
     public UserAccount() {
@@ -65,5 +66,13 @@ public class UserAccount {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getIdCompany() {
+        return idCompany;
+    }
+
+    public void setIdCompany(int idCompany) {
+        this.idCompany = idCompany;
     }
 }

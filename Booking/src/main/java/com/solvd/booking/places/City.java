@@ -4,15 +4,24 @@ public class City {
 
     private int id;
     private String name;
-    private int postalCode;
+    private String postalCode;
+    private int countryId;
 
     public City() {
     }
 
-    public City(int id, String name, int postalCode) {
+    public City(int id, String name, String postalCode) {
         this.id = id;
         this.name = name;
         this.postalCode = postalCode;
+    }
+
+    public int getCountryId() {
+        return countryId;
+    }
+
+    public void setCountryId(int countryId) {
+        this.countryId = countryId;
     }
 
     public int getId() {
@@ -31,11 +40,11 @@ public class City {
         this.name = name;
     }
 
-    public int getPostalCode() {
+    public String getPostalCode() {
         return postalCode;
     }
 
-    public void setPostalCode(int postalCode) {
+    public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
 }

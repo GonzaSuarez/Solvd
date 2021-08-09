@@ -1,17 +1,20 @@
 package com.solvd.booking.services;
 
-import com.solvd.booking.dao.daoclass.CityDAO;
-import com.solvd.booking.dao.daoclass.CountryDAO;
-import com.solvd.booking.dao.idao.ICityDAO;
-import com.solvd.booking.dao.idao.ICountryDAO;
+import com.solvd.booking.dao.mysqldao.jbdc.CityDAO;
+import com.solvd.booking.dao.mysqldao.jbdc.CountryDAO;
+import com.solvd.booking.dao.ICityDAO;
+import com.solvd.booking.dao.ICountryDAO;
 import com.solvd.booking.places.Country;
+
+import java.io.IOException;
+import java.sql.SQLException;
 
 public class CountryService {
 
     private ICountryDAO countryDAO = new CountryDAO();
     private ICityDAO cityDAO = new CityDAO();
 
-    public CountryService() throws InterruptedException {
+    public CountryService() throws InterruptedException, SQLException, ClassNotFoundException, IOException {
     }
 
     public ICountryDAO getCountryDAO() {
@@ -30,7 +33,7 @@ public class CountryService {
         this.cityDAO = cityDAO;
     }
 
-    public Country getCountry(int countryId) throws InterruptedException {
+    public Country getCountry(int countryId) throws InterruptedException, SQLException, ClassNotFoundException, IOException {
         Country country = countryDAO.getItemById(countryId);
         country.addCity(cityDAO.getCitiesByCountryId(countryId));
         return country;

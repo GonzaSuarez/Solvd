@@ -1,10 +1,13 @@
 package com.solvd.booking.services;
 
-import com.solvd.booking.dao.daoclass.ReservationDAO;
-import com.solvd.booking.dao.daoclass.UserDAO;
-import com.solvd.booking.dao.idao.IReservationDAO;
-import com.solvd.booking.dao.idao.IUserDAO;
+import com.solvd.booking.dao.mysqldao.jbdc.ReservationDAO;
+import com.solvd.booking.dao.mysqldao.jbdc.UserDAO;
+import com.solvd.booking.dao.IReservationDAO;
+import com.solvd.booking.dao.IUserDAO;
 import com.solvd.booking.hotel.Reservation;
+
+import java.io.IOException;
+import java.sql.SQLException;
 
 public class ReservationService {
 
@@ -12,7 +15,7 @@ public class ReservationService {
     private IUserDAO userDAO = new UserDAO();
 
 
-    public ReservationService() throws InterruptedException {
+    public ReservationService() throws InterruptedException, SQLException, ClassNotFoundException, IOException {
     }
 
     public IReservationDAO getReservationDAO() {
@@ -31,7 +34,7 @@ public class ReservationService {
         this.userDAO = userDAO;
     }
 
-    public Reservation getReservation(int id) throws InterruptedException {
+    public Reservation getReservation(int id) throws InterruptedException, SQLException, ClassNotFoundException, IOException {
         Reservation reservation = reservationDAO.getItemById(id);
         reservation.setClient(userDAO.getUserByReservationId(id));
         return reservation;

@@ -1,5 +1,10 @@
 package com.solvd.booking.hotel;
 
+import com.solvd.booking.travelcompany.UserAccount;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
 
     private int id;
@@ -9,6 +14,7 @@ public class User {
     private String address;
     private int phone;
     private String details;
+    private List<UserAccount> accounts;
 
     public User() {
     }
@@ -17,6 +23,15 @@ public class User {
         this.firstName = firstName;
         this.id = id;
         this.email = email;
+        this.accounts = new ArrayList<>();
+    }
+
+    public List<UserAccount> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<UserAccount> accounts) {
+        this.accounts = accounts;
     }
 
     public int getId() {
