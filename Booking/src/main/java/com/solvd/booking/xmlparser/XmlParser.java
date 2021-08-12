@@ -20,20 +20,10 @@ import java.util.List;
 public abstract class XmlParser<T> {
 
     protected File file;
-    protected Document doc;
     protected static final Logger log = LogManager.getLogger(Main.class);
 
-    public XmlParser(File file) {
-        this.file = file;
-        try {
-            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            doc = dBuilder.parse(file);
-        } catch (Exception e) {
-            log.error(e.getMessage());
-        }
-    }
+    public XmlParser() {}
 
-    public abstract void serializeFile(T serializable);
-    public abstract List<T> deserializeFile() throws ParserConfigurationException, IOException, SAXException;
+    public abstract void serializeFile(List<T> serializable);
+    public abstract List<T> deserializeFile(File file) throws ParserConfigurationException, IOException, SAXException;
 }

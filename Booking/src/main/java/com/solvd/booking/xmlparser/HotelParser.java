@@ -1,6 +1,7 @@
 package com.solvd.booking.xmlparser;
 
 import com.solvd.booking.hotel.Hotel;
+import com.solvd.booking.hotel.Room;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
@@ -18,35 +19,69 @@ import java.util.List;
 
 public class HotelParser extends XmlParser<Hotel>{
 
-    public HotelParser(File file) {
-        super(file);
-    }
+    public HotelParser() {}
 
     @Override
-    public void serializeFile(Hotel hotel) {
+    public void serializeFile(List<Hotel> hotels) {
         try{
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document doc = db.newDocument();
+
             Element eRoot = doc.createElement("hotels");
             doc.appendChild(eRoot);
-            
-            Element eHotel = doc.createElement(hotel.getClass().toString());
-            eRoot.appendChild(eHotel);
-            
-            Attr attr = doc.createAttribute("id");
-            attr.setValue((Integer.toString(hotel.getId())));
-            eHotel.setAttributeNode(attr);
-            
-            Element eName = doc.createElement("name");
-            eName.appendChild(doc.createTextNode(hotel.getName()));
-            eHotel.appendChild(eName);
 
-            Element eDescription = doc.createElement("description");
-            eDescription.appendChild(doc.createTextNode(hotel.getDescription()));
-            eHotel.appendChild(eDescription);
+            for (Hotel hotel: hotels) {
 
+                Element eHotel = doc.createElement(hotel.getClass().getSimpleName());
+                eRoot.appendChild(eHotel);
+
+                Attr attr = doc.createAttribute("id");
+                attr.setValue((Integer.toString(hotel.getId())));
+                eHotel.setAttributeNode(attr);
+
+                Element eName = doc.createElement("name");
+                eName.appendChild(doc.createTextNode(hotel.getName()));
+                eHotel.appendChild(eName);
+
+                Element eDescription = doc.createElement("description");
+                eDescription.appendChild(doc.createTextNode(hotel.getDescription()));
+                eHotel.appendChild(eDescription);
+
+                Element eCityId = doc.createElement("cityid");
+                eCityId.appendChild(doc.createTextNode(Integer.toString(hotel.getCityId())));
+                eHotel.appendChild(eCityId);
+
+                Element eRooms = doc.createElement("rooms");
+                eRooms.appendChild(doc.createTextNode("rooms"));
+                eHotel.appendChild(eRooms);
+                for (Room r : hotel.getRooms()) {
+                    Element eRoomId = doc.createElement("roomid");
+                    eRoomId.appendChild(doc.createTextNode(Integer.toString(r.getId())));
+                    eHotel.appendChild(eRoomId);
+
+                    Element eRoomName = doc.createElement("roomname");
+                    eRoomName.appendChild(doc.createTextNode(r.getRoomName()));
+                    eHotel.appendChild(eRoomName);
+
+                    Element eRoomHotelId = doc.createElement("roomhotelid");
+                    eRoomHotelId.appendChild(doc.createTextNode(Integer.toString(r.getIdHotel())));
+                    eHotel.appendChild(eRoomHotelId);
+
+                    Element ePrice = doc.createElement("roomprice");
+                    ePrice.appendChild(doc.createTextNode(Double.toString(r.getPrice())));
+                    eHotel.appendChild(ePrice);
+
+                    Element eRoomDescription = doc.createElement("roomname");
+                    eRoomDescription.appendChild(doc.createTextNode(r.getDescription()));
+                    eHotel.appendChild(eRoomDescription);
+                }
+
+            }
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File("hotel.xml"));
+            StreamResult result = new StreamResult(new File("src/main/resources/hotel.xml"));
 
             transformer.transform(source, result);
         } catch(Exception e) {
@@ -55,15 +90,15 @@ public class HotelParser extends XmlParser<Hotel>{
     }
 
     @Override
-    public List<Hotel> deserializeFile() throws ParserConfigurationException, IOException, SAXException {
-        List<Hotel> hotels = new ArrayList<Hotel>();
-        Hotel hotel = null;
+    public List<Hotel> deserializeFile(File file) throws ParserConfigurationException, IOException, SAXException {
+        List<Hotel> hotels = new ArrayList<>();
+        Hotel hotel;
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
-        Document document = builder.parse(new File("hotel.xml"));
+        Document document = builder.parse(file);
         document.getDocumentElement().normalize();
-        NodeList nList = document.getElementsByTagName("hotel");
+        NodeList nList = document.getElementsByTagName("hotels");
         for (int temp = 0; temp < nList.getLength(); temp++)
         {
             Node node = nList.item(temp);
