@@ -1,13 +1,25 @@
 package com.solvd.booking.travelcompany;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name="useraccount")
 public class UserAccount {
 
+    @XmlAttribute(name="id")
     private int id;
+    @XmlElement(name= "first_name")
     private String firstName;
+    @XmlElement(name= "last_name")
     private String lastName;
+    @XmlElement(name= "email")
     private String email;
+    @XmlElement(name= "user")
     private String user;
+    @XmlElement(name= "password")
     private String password;
+    @XmlElement(name= "idcompany")
     private int idCompany;
 
 

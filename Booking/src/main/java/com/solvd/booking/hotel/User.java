@@ -2,18 +2,30 @@ package com.solvd.booking.hotel;
 
 import com.solvd.booking.travelcompany.UserAccount;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
+@XmlRootElement(name= "user")
 public class User {
 
+    @XmlAttribute(name="id")
     private int id;
+    @XmlElement(name= "first_name")
     private String firstName;
+    @XmlElement(name= "last_name")
     private String lastName;
+    @XmlElement(name= "email")
     private String email;
+    @XmlElement(name= "address")
     private String address;
+    @XmlElement(name= "phone")
     private int phone;
+    @XmlElement(name= "details")
     private String details;
+    @XmlElement(name = "accounts")
     private List<UserAccount> accounts;
 
     public User() {

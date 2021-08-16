@@ -1,11 +1,21 @@
 package com.solvd.booking.hotel;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "room")
 public class Room {
 
+    @XmlAttribute(name= "id")
     private int id;
+    @XmlElement(name= "room_name")
     private String roomName;
+    @XmlElement(name = "Hotel_id")
     private int idHotel;
+    @XmlElement(name = "current_name")
     private double price;
+    @XmlElement(name = "description")
     private String description;
     
 

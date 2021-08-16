@@ -1,10 +1,19 @@
 package com.solvd.booking.travelcompany;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name="plane")
 public class Plane {
 
+    @XmlAttribute(name="id")
     private int id;
+    @XmlElement(name= "capacity")
     private int capacity;
+    @XmlElement(name= "travelcompanyid")
     private int travelCompanyId;
+    @XmlElement(name= "travelcompanyid")
     private int travelCompanyCityId;
 
     public Plane() {

@@ -3,17 +3,28 @@ package com.solvd.booking.travelcompany;
 import com.solvd.booking.hotel.Hotel;
 import com.solvd.booking.places.City;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
+@XmlRootElement(name="travelcompany")
 public class TravelCompany {
 
+    @XmlAttribute(name="id")
     private int id;
+    @XmlElement(name= "company_name")
     private String name;
+    @XmlElement(name= "email")
     private String email;
+    @XmlElement(name= "planes")
     private List<Plane> planes;
+    @XmlElement(name= "hotels")
     private List<Hotel> hotels;
+    @XmlElement(name= "cities")
     private City city;
+    @XmlElement(name= "useraccountsList")
     private List<UserAccount> userAccounts;
 
     public TravelCompany() {

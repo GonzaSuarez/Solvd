@@ -1,6 +1,5 @@
-package com.solvd.booking.xmlparser;
+package com.solvd.booking.parsers.xml;
 
-import com.solvd.booking.hotel.Room;
 import com.solvd.booking.places.City;
 import com.solvd.booking.places.Country;
 import org.w3c.dom.*;

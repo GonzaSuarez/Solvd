@@ -1,14 +1,23 @@
 package com.solvd.booking.hotel;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Calendar;
 
+@XmlRootElement(name = "reservation")
 public class Reservation {
 
+    @XmlAttribute(name = "id")
     private int id;
+
     private Calendar startingDate;
     private Calendar endingDate;
+    @XmlElement(name = "total_price")
     private double price;
+    @XmlElement(name= "discount")
     private float discount;
+    @XmlElement(name="user")
     private User client;
 
     public Reservation() {

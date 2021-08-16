@@ -1,12 +1,19 @@
 package com.solvd.booking.places;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
+@XmlRootElement(name="country")
 public class Country {
 
+    @XmlAttribute(name="id")
     private int id;
+    @XmlElement(name= "country_name")
     private String name;
+    @XmlElement(name= "cities")
     private List<City> cities;
 
     public Country() {

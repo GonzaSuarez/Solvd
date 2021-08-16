@@ -1,10 +1,19 @@
 package com.solvd.booking.places;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name= "city")
 public class City {
 
+    @XmlAttribute(name= "id")
     private int id;
+    @XmlElement(name= "city_name")
     private String name;
+    @XmlElement(name= "postal_code")
     private String postalCode;
+    @XmlElement(name= "countryid")
     private int countryId;
 
     public City() {

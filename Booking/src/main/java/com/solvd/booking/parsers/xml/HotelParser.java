@@ -1,4 +1,4 @@
-package com.solvd.booking.xmlparser;
+package com.solvd.booking.parsers.xml;
 
 import com.solvd.booking.hotel.Hotel;
 import com.solvd.booking.hotel.Room;

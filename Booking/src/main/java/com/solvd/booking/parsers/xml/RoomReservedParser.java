@@ -1,6 +1,5 @@
-package com.solvd.booking.xmlparser;
+package com.solvd.booking.parsers.xml;
 
-import com.solvd.booking.hotel.Room;
 import com.solvd.booking.hotel.RoomReserved;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;

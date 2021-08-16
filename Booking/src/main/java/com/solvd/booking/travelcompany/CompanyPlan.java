@@ -1,9 +1,17 @@
 package com.solvd.booking.travelcompany;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name="companyplan")
 public class CompanyPlan {
 
+    @XmlAttribute(name="id")
     private int id;
+    @XmlElement(name= "idplan")
     private int idPlan;
+    @XmlElement(name= "idtravelcompany")
     private int idTravelCompany;
 
     public CompanyPlan() {
