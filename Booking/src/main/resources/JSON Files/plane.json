@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "capacity": 100,
+    "travelCompanyId": 1,
+    "travelCompanyCityId": 1
+  },
+  {
+    "id": 2,
+    "capacity": 200,
+    "travelCompanyId": 1,
+    "travelCompanyCityId": 1
+  },
+  {
+    "id": 3,
+    "capacity": 100,
+    "travelCompanyId": 2,
+    "travelCompanyCityId": 2
+  },
+  {
+    "id": 4,
+    "capacity": 200,
+    "travelCompanyId": 2,
+    "travelCompanyCityId": 2
+  }
+]

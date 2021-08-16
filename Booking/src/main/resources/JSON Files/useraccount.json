@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "jdoe@gmail.com",
+    "user": "Jdoe",
+    "password": "Eodj",
+    "idCompany": 1
+  },
+  {
+    "id" : 2,
+    "firstName" : "Lionel",
+    "lastName" : "Messi",
+    "email" : "lmessi@gmail.com",
+    "user" : "Messi",
+    "password" : "GOAT",
+    "idCompany" : 1
+  },
+  {
+    "id": 3,
+    "firstName": "Cristiano",
+    "lastName": "Ronaldo",
+    "email": "cronaldo@gmail.com",
+    "user": "CR7",
+    "password": "CR7",
+    "idCompany": 2
+  }
+]

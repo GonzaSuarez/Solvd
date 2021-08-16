@@ -1,6 +1,8 @@
 package com.solvd.booking.hotel;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
 import com.solvd.booking.travelcompany.UserAccount;
+import org.codehaus.jackson.annotate.JsonValue;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
@@ -9,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement(name= "user")
+@JsonRootName("user")
 public class User {
 
     @XmlAttribute(name="id")
@@ -22,7 +25,7 @@ public class User {
     @XmlElement(name= "address")
     private String address;
     @XmlElement(name= "phone")
-    private int phone;
+    private long phone;
     @XmlElement(name= "details")
     private String details;
     @XmlElement(name = "accounts")
@@ -86,11 +89,11 @@ public class User {
         this.address = address;
     }
 
-    public int getPhone() {
+    public long getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(long phone) {
         this.phone = phone;
     }
 

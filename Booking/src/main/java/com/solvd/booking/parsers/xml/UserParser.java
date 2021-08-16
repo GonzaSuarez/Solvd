@@ -61,7 +61,7 @@ public class UserParser extends XmlParser<User>{
                 eUser.appendChild(eUserDetails);
 
                 Element eUserPhone = doc.createElement("useremail");
-                eUserPhone.appendChild(doc.createTextNode(Integer.toString(user.getPhone())));
+                eUserPhone.appendChild(doc.createTextNode(Long.toString(user.getPhone())));
                 eUser.appendChild(eUserPhone);
 
                 for (UserAccount userAccount : user.getAccounts()) {

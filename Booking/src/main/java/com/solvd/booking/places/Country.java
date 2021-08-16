@@ -1,5 +1,7 @@
 package com.solvd.booking.places;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
+
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -7,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement(name="country")
+@JsonRootName("countryA")
 public class Country {
 
     @XmlAttribute(name="id")

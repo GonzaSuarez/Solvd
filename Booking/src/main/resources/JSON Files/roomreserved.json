@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "price": 200,
+    "idRoom" : 1,
+    "idReservation": 1
+  },
+  {
+    "id": 2,
+    "price": 300,
+    "idRoom" : 2,
+    "idReservation" : 2
+  }
+]

@@ -78,7 +78,7 @@ public class ReservationParser extends XmlParser<Reservation>{
                     eReservation.appendChild(eClientAddress);
 
                     Element eClientPhone = doc.createElement("clientphone");
-                    eClientPhone.appendChild(doc.createTextNode(Integer.toString(reservation.getClient().getPhone())));
+                    eClientPhone.appendChild(doc.createTextNode(Long.toString(reservation.getClient().getPhone())));
                     eReservation.appendChild(eClientPhone);
 
                     Element eClientDetails = doc.createElement("clientdetails");

@@ -75,7 +75,7 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
             ps.setString(1, user.getFirstName());
             ps.setString(2, user.getLastName());
             ps.setString(3, user.getEmail());
-            ps.setInt(4, user.getPhone());
+            ps.setLong(4, user.getPhone());
             ps.setString(5, user.getAddress());
             ps.execute();
         } catch (SQLException throwables) {
@@ -129,7 +129,7 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
     @Override
     public void updatePhone(User user) {
         try(PreparedStatement ps = connection.prepareStatement(UPDATE_USER_PHONE)) {
-            ps.setInt(1, user.getPhone());
+            ps.setLong(1, user.getPhone());
             ps.setInt(2, user.getId());
             ps.execute();
         } catch (SQLException throwables) {

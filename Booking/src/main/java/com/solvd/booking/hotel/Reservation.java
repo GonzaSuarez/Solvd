@@ -1,11 +1,14 @@
 package com.solvd.booking.hotel;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
+
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Calendar;
 
 @XmlRootElement(name = "reservation")
+@JsonRootName("reservation")
 public class Reservation {
 
     @XmlAttribute(name = "id")

@@ -1,5 +1,6 @@
 package com.solvd.booking.travelcompany;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
 import com.solvd.booking.hotel.Hotel;
 import com.solvd.booking.places.City;
 
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement(name="travelcompany")
+@JsonRootName("travelcompany")
 public class TravelCompany {
 
     @XmlAttribute(name="id")

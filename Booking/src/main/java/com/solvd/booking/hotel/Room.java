@@ -1,10 +1,13 @@
 package com.solvd.booking.hotel;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
+
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "room")
+@JsonRootName("room")
 public class Room {
 
     @XmlAttribute(name= "id")
