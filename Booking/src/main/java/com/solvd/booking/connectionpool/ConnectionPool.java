@@ -26,7 +26,7 @@ public class ConnectionPool {
 
     private ConnectionPool() throws ClassNotFoundException, IOException {
         Properties properties = new Properties();
-        String dbSettingsPropertyFile = "resources/JDBCSettings.properties";
+        String dbSettingsPropertyFile = "src/main/resources/JDBCSettings.properties";
         FileReader fReader;
         try {
             fReader = new FileReader(dbSettingsPropertyFile);

@@ -1,6 +1,7 @@
 package com.solvd.booking.main;
 
 
+import com.solvd.booking.connectionpool.ConnectionPool;
 import com.solvd.booking.hotel.*;
 
 import org.apache.logging.log4j.LogManager;
