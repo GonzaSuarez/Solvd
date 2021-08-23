@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "Necochea",
+    "postalCode": "7630",
+    "countryId": 1
+  },
+  {
+    "id": 2,
+    "name": "Quequen",
+    "postalCode": "7631",
+    "countryId": 1
+  }
+]

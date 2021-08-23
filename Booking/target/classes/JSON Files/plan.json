@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Summer",
+    "minRoom": 1,
+    "maxRoom": null,
+    "monthlyPrice": 200,
+    "details": "this is a summer plan"
+  },
+  {
+    "id": 2,
+    "name": "Winter",
+    "minRoom": 2,
+    "maxRoom": 4,
+    "monthlyPrice": 400,
+    "details": "this is a winter plan"
+  }
+]

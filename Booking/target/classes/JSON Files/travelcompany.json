@@ -1,0 +1,132 @@
+[
+  {
+    "id": 1,
+    "name": "Necochea Company",
+    "email": "necocheaco@gmail.com",
+    "planes": [
+      {
+        "id": 1,
+        "capacity": 100,
+        "travelCompanyId": 1,
+        "travelCompanyCityId": 1
+      },
+      {
+        "id": 2,
+        "capacity": 200,
+        "travelCompanyId": 1,
+        "travelCompanyCityId": 1
+      }
+    ],
+    "hotels": [
+      {
+        "id" : 1,
+        "name" : "Niken",
+        "rooms": [
+          {
+            "id" : 1,
+            "roomName" : "Simple",
+            "idHotel" : 1,
+            "price" : 200,
+            "description" : "This is a simple room"
+          },
+          {
+            "id" : 2,
+            "roomName" : "Double",
+            "idHotel" : 1,
+            "price" : 300,
+            "description" : "This is a double room"
+          }
+        ],
+        "description" : "This is an Hotel in Necochea",
+        "cityId" : 1
+      }
+    ],
+    "city": {
+      "id": 1,
+      "name": "Necochea",
+      "postalCode": "7630",
+      "countryId": 1
+    },
+    "userAccounts": [
+      {
+        "id": 1,
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "jdoe@gmail.com",
+        "user": "Jdoe",
+        "password": "Eodj",
+        "idCompany": 1
+      },
+      {
+        "id" : 2,
+        "firstName" : "Lionel",
+        "lastName" : "Messi",
+        "email" : "lmessi@gmail.com",
+        "user" : "Messi",
+        "password" : "GOAT",
+        "idCompany" : 1
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Quequen Co",
+    "email": "quequenco@gmail.com",
+    "planes": [
+      {
+        "id": 3,
+        "capacity": 100,
+        "travelCompanyId": 2,
+        "travelCompanyCityId": 2
+      },
+      {
+        "id": 4,
+        "capacity": 200,
+        "travelCompanyId": 2,
+        "travelCompanyCityId": 2
+      }
+    ],
+    "hotels": [
+      {
+        "id" : 2,
+        "name" : "Quequen Hotel",
+        "rooms": [
+          {
+            "id" : 3,
+            "roomName" : "Simple",
+            "idHotel" : 2,
+            "price" : 200,
+            "description" : "This is a simple room"
+          },
+          {
+            "id" : 4,
+            "roomName" : "Double",
+            "idHotel" : 2,
+            "price" : 300,
+            "description" : "This is a double room"
+          }
+        ],
+        "description" : "This is an Hotel in Quequen",
+        "cityId" : 2
+      }
+    ],
+    "city":
+    {
+      "id": 2,
+      "name": "Quequen",
+      "postalCode": "7631",
+      "countryId": 1
+    },
+    "userAccounts": [
+      {
+        "id": 3,
+        "firstName": "Cristiano",
+        "lastName": "Ronaldo",
+        "email": "cronaldo@gmail.com",
+        "user": "CR7",
+        "password": "CR7",
+        "idCompany": 2
+      }
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "idPlan": 1,
+    "idTravelCompany": 1
+  },
+  {
+    "id": 2,
+    "idPlan": 2,
+    "idTravelCompany": 1
+  },
+  {
+    "id": 3,
+    "idPlan": 1,
+    "idTravelCompany": 2
+  },
+  {
+    "id": 4,
+    "idPlan": 2,
+    "idTravelCompany": 2
+  }
+]
